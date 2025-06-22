@@ -1,5 +1,6 @@
 import express from "express";
 import userRoutes from "./routes/userRoutes.js";
+import userTypeRoutes from "./routes/userTypeRoutes.js";
 import { connectDB } from "./config/db.js";
 import dotenv from "dotenv";
 
@@ -12,6 +13,7 @@ connectDB(); //middleware
 app.use(express.json());
 
 app.use("/api/home", userRoutes);
+app.use("/api/home", userTypeRoutes);
 
 app.listen(PORT, () => {
   console.log("Server started on PORT: ", PORT);

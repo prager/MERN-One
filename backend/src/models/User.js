@@ -15,7 +15,11 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    type: {
+    pwd: {
+      type: String,
+      required: true,
+    },
+    usrtype: {
       type: String,
       required: true,
     },
