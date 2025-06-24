@@ -1,5 +1,14 @@
 /* Divider from https://bootstrapexamples.com/@aisha-bello/bootstrap-5-section-dividers */
 
+body {
+  font-family: Verdana, sans-serif;
+  font-size: 16px;
+}
+
+.intro-line {
+  line-height: 1.9;
+}
+
 .divider {
   margin: 1rem 0;
   position: relative;

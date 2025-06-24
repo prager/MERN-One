@@ -2,10 +2,10 @@ import React from "react";
 import { Route, Routes } from "react-router";
 import HomePage from "./pages/HomePage";
 import UserPage from "./pages/UserPage";
-import toast from "react-hot-toast";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import "./styles/custom.css";
 
 const App = () => {
   return (
@@ -15,7 +15,7 @@ const App = () => {
           <ul className="navbar-nav">
             <li className="nav-item">
               <a className="nav-link active" href="#">
-                Active
+                Login
               </a>
             </li>
             <li className="nav-item">
