@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router";
 import HomePage from "./pages/HomePage";
 import UserPage from "./pages/UserPage";
+import LoginModal from "./pages/LoginModal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -15,7 +16,7 @@ const App = () => {
           <ul className="navbar-nav">
             <li className="nav-item">
               <a className="nav-link active" href="#">
-                Login
+                <LoginModal />
               </a>
             </li>
             <li className="nav-item">
