@@ -1,24 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router";
 
 const LoginModal = () => {
-  const [form, setForm] = useState({ username: "", password: "" });
+  const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const modalRef = useRef(null);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
+
+  useEffect(() => {
+    document.body.classList.add("modal-open");
+    return () => document.body.classList.remove("modal-open");
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
+      const res = await fetch("http://localhost:5002/api/home/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.msg || "Login failed");
-      alert("Login successful. Token: " + data.token);
+      //alert("Login successful. Token: " + data.token);
+      navigate("/users");
     } catch (err) {
       setError(err.message);
     }
@@ -35,7 +44,7 @@ const LoginModal = () => {
         Login
       </a>
 
-      <div className="modal fade" id="loginModal" tabIndex="-1">
+      <div className="modal fade" id="loginModal" tabIndex="-1" ref={modalRef}>
         <div className="modal-dialog">
           <div className="modal-content p-3">
             <div className="modal-header">
@@ -50,10 +59,10 @@ const LoginModal = () => {
               <div className="modal-body">
                 {error && <div className="alert alert-danger">{error}</div>}
                 <input
-                  type="text"
-                  name="username"
+                  type="email"
+                  name="email"
                   className="form-control my-2"
-                  placeholder="Username"
+                  placeholder="Email"
                   onChange={handleChange}
                   required
                 />
